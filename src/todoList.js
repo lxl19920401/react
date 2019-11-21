@@ -19,12 +19,13 @@ class todoList extends React.Component {
 							
 		  }
 			componentWillMount(){
-				
 				this.setState({
-						list: JSON.parse(localStorage.getItem('todoList'))
+						list: JSON.parse(localStorage.getItem('todoList')) || []
 					});
 			}
-		add(){		
+		add(e){
+			let key = window.event.keyCode;
+			if(key != 13) return;
 			var  txt= this.refs.text.value
 			if(txt){
 				let obj = {text:txt,done:false}
